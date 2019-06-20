@@ -18,8 +18,8 @@ fi
 # Generic defines (do not edit)
 ############################################################
 MY_PATH="$(cd -P -- "$(dirname -- "${0}")" && pwd -P)"
-#MY_NAME="$( basename "${0}" )"
-MY_FUNCTIONS="${MY_PATH}/.lib/functions.sh"
+# MY_NAME="$( basename "${0}" )"
+# MY_FUNCTIONS="${MY_PATH}/.lib/functions.sh"
 MY_BACKUPDIR="${HOME}/dotfiles-backup_$(date '+%Y-%m-%d_%H.%M.%S')"
 
 ############################################################
@@ -28,7 +28,7 @@ MY_BACKUPDIR="${HOME}/dotfiles-backup_$(date '+%Y-%m-%d_%H.%M.%S')"
 
 # Source lib
 # shellcheck disable=SC1090
-. "${MY_FUNCTIONS}"
+# . "${MY_FUNCTIONS}"
 
 # Create Backup folder
 if [ ! -d "${MY_BACKUPDIR}" ]; then
