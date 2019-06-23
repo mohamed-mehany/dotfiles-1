@@ -51,8 +51,8 @@ if dein#load_state(expand('~/.local/share/nvim/bundles'))
 " ------------ Autocompletion {{{
 	let g:ycm_python_binary_path = '/usr/bin/python3'
 	"call dein#add('Valloric/YouCompleteMe', {'build': './install.py --clang-completer --gocode-completer'})
-	"call dein#add('Valloric/YouCompleteMe', {'build': './install.py --clang-completer'})
-	call dein#add('Valloric/YouCompleteMe', {'build': './install.py'})
+	call dein#add('Valloric/YouCompleteMe', {'build': './install.py --java-completer --clang-completer'})
+	"call dein#add('Valloric/YouCompleteMe', {'build': './install.py'})
 "}}}
 " ------------ Tagbar {{{
 	call dein#add('majutsushi/tagbar', {'on_cmd': ['TagbarToggle']})
