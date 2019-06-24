@@ -44,7 +44,7 @@ set $WS3 3  web
 set $WS4 4  dev
 set $WS5 5  mail
 set $WS6 6  files
-set $WS7 7 
+set $WS7 7  chime
 set $WS8 8 
 set $WS9 9 
 set $WS10 10  tmp
@@ -158,7 +158,7 @@ bindsym $mod+Shift+space floating toggle
 ############################################################################################
 
 # split in horizontal orientation
-bindsym $mod+g split h
+bindsym $mod+c split h
 bindsym $mod+v split v
 bindsym $mod+t split toggle
 
@@ -431,7 +431,7 @@ bindsym $mod+d     exec "exec rofi -show run
 bindsym $mod+space exec "exec rofi -show combi -combi-modi window,drun,run -modi combi,'calc:rcalc' -sidebar-mode"
 
 # Clipboard Dialog
-bindsym $mod+c exec "CM_LAUNCHER=rofi clipmenu -p 'clipboard:'"
+bindsym $mod+g exec "CM_LAUNCHER=rofi clipmenu -p 'clipboard:'"
 
 # Pass Dialog
 bindsym $mod+p exec /home/cytopia/bin/pass-dmenu.sh
@@ -496,13 +496,12 @@ for_window [class="URxvt" instance="floating_urxvt$"] floating toggle
 #
 ############################################################################################
 
-#assign [class="Subl3"]			$WS2
-#assign [class="Chromium"]		$WS3
-#assign [class="Filezilla"]		$WS4
-#assign [class="Skype"]			$WS6
-#assign [class="Gajim"]			$WS6
-#assign [class="Evolution"]		$WS7
-#assign [class="xpad"]			$WS10
+assign [class="Firefox"]		$WS3
+assign [class="Filezilla"]		$WS4
+assign [class="Evolution"]		$WS5
+assign [class="Chime"]			$WS7
+assign [class="Gajim"]			$WS6
+assign [class="xpad"]			$WS10
 
 
 

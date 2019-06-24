@@ -62,9 +62,9 @@ command=~/.local/share/i3blocks-modules/modules/ethereum -f 'E {usd}$' -tc '{usd
 interval=180
 
 # Requires internet
-[bch]
-command=~/.local/share/i3blocks-modules/modules/bitcoincash -f 'BC {usd}$' -tc '{usd}' '<' 665
-interval=180
+#[bch]
+#command=~/.local/share/i3blocks-modules/modules/bitcoincash -f 'BC {usd}$' -tc '{usd}' '<' 665
+#interval=180
 
 # Requires internet
 [btc]

@@ -15,19 +15,6 @@ case $- in
 	*) return;;
 esac
 
-# Start tmux for every new terminal
-if [[ -z "${TMUX}" ]] ;then
-	# get the id of a deattached session
-	SESS_ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )"
-
-	# if not available create a new one
-	if [[ -z "${SESS_ID}" ]] ;then
-		tmux -2 -u new-session
-	# if detached session available attach to it
-	else
-		tmux -2 -u attach-session -t "${SESS_ID}"
-	fi
-fi
 
 
 ################################################################################
