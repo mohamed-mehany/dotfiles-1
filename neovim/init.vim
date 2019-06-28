@@ -1,12 +1,3 @@
-"------- Dein: Init {{{
-"-------------------------------------------------------------------------------
-"
-" Usage
-" :call dein#install()
-" :call dein#build()
-" :call dein#check_update()
-" :call dein#update()
-"
 " Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
@@ -14,120 +5,117 @@ if &compatible
 	set nocompatible    " Be iMproved
 endif
 
-"set runtimepath+=~/.config/nvim/bundles/repos/github.com/Shougo/dein.vim
-set runtimepath+=~/.local/share/nvim/bundles/repos/github.com/Shougo/dein.vim
-
-" Required:
-if dein#load_state(expand('~/.local/share/nvim/bundles'))
-	call dein#begin(expand('~/.local/share/nvim/bundles'))
-
-	" Let dein manage dein
-	" Required:
-	call dein#add(expand('~/.local/share/nvim/bundles/repos/github.com/Shougo/dein.vim'))
-"}}}
-"------- Dein: Plugins {{{
+"------- VimPlug: Plugins {{{
 "-------------------------------------------------------------------------------
+call plug#begin('~/.vim/plugged')
+" ------------ Vim extension {{{
+	Plug 'Shougo/vimproc.vim', {'build': 'make'}
+	Plug 'Shougo/vimshell.vim'
+"}}}
+"
+	" [Fuzzy Finder] Unite
+	" Ultimate navigation plugin
+	" @replaces:	command_T / ctrl_P
+	" @required by:	vimfiler
+	Plug 'Shougo/unite.vim'
+
+	" FZF
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
+	
+	" [Explorer] NERDTree
+	Plug 'scrooloose/nerdtree.git'
+	Plug 'jistr/vim-nerdtree-tabs'
+	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" ------------ File explorer/tabs {{{
+	Plug 'junegunn/fzf', {'build': './install --bin'}
+	Plug 'junegunn/fzf.vim'
 " ------------ Vim extension {{{
 	" Vimproc to asynchronously run commands (Unite)
-	call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-	call dein#add('Shougo/vimshell.vim')
+	Plug 'Shougo/vimproc.vim', {'build': 'make'}
+	Plug 'Shougo/vimshell.vim'
 "}}}
-" ------------ File explorer/tabs {{{
-	" FZF
-	call dein#add('junegunn/fzf', {'build': './install --bin'})
-	call dein#add('junegunn/fzf.vim')
 
 	" [Fuzzy Finder] Unite
 	" Ultimate navigation plugin
 	" @replaces:	command_T / ctrl_P
 	" @required by:	vimfiler
-	call dein#add('Shougo/unite.vim')
+	Plug 'Shougo/unite.vim'
 
 	" [Explorer] NERDTree
-	call dein#add('scrooloose/nerdtree.git')
-	call dein#add('jistr/vim-nerdtree-tabs')
-	call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+	Plug 'scrooloose/nerdtree'
+	Plug 'jistr/vim-nerdtree-tabs'
+	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "}}}
 " ------------ Autocompletion {{{
 	let g:ycm_python_binary_path = '/usr/bin/python3'
-	"call dein#add('Valloric/YouCompleteMe', {'build': './install.py --clang-completer --gocode-completer'})
-	call dein#add('Valloric/YouCompleteMe', {'build': './install.py --java-completer --clang-completer'})
-	"call dein#add('Valloric/YouCompleteMe', {'build': './install.py'})
+	"Plug 'Valloric/YouCompleteMe', {'build': './install.py --clang-completer --gocode-completer'}
+	Plug 'Valloric/YouCompleteMe', {'build': './install.py --java-completer --clang-completer'}
+	"Plug 'Valloric/YouCompleteMe', {'build': './install.py'})
 "}}}
 " ------------ Tagbar {{{
-	call dein#add('majutsushi/tagbar', {'on_cmd': ['TagbarToggle']})
-	call dein#add('vim-php/tagbar-phpctags.vim', {'build': 'make'})
+	Plug 'majutsushi/tagbar', {'on_cmd': ['TagbarToggle']}
+	Plug 'vim-php/tagbar-phpctags.vim', {'build': 'make'}
 "}}}
 " ------------ Git {{{
 	" Show git status of line + , - or ~
-	call dein#add('airblade/vim-gitgutter')
+	Plug 'airblade/vim-gitgutter'
 
 	" Show git repository changes in the current file
-	call dein#add('tpope/vim-fugitive')
+	Plug 'tpope/vim-fugitive'
 
 	" Git viewer
-	call dein#add('gregsexton/gitv')
+	Plug 'gregsexton/gitv'
 "}}}
 " ------------ Syntax linting{{{
-	call dein#add('scrooloose/syntastic')
+	Plug 'scrooloose/syntastic'
 "}}}
 " ------------ Colorschemes {{{
-	call dein#add('notpratheek/vim-luna')
-	call dein#add('junegunn/seoul256.vim')
-	call dein#add('geoffharcourt/one-dark.vim')
-	call dein#add('tomasr/molokai')
-	call dein#add('w0ng/vim-hybrid')
-	call dein#add('octol/vim-cpp-enhanced-highlight')
+	Plug 'notpratheek/vim-luna'
+	Plug 'junegunn/seoul256.vim'
+	Plug 'geoffharcourt/one-dark.vim'
+	Plug 'tomasr/molokai'
+	Plug 'w0ng/vim-hybrid'
+	Plug 'octol/vim-cpp-enhanced-highlight'
 "}}}
 " ------------ Whitespace {{{
-	call dein#add('ntpeters/vim-better-whitespace')
+	Plug 'ntpeters/vim-better-whitespace'
 "}}}
 " ------------ Syntax highlighter {{{
-	call dein#add('elzr/vim-json', {'on_ft': ['json']})
-	call dein#add('jelera/vim-javascript-syntax', {'on_ft': ['javascript']})
-	call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
-	call dein#add('groenewege/vim-less', {'on_ft': ['less']})
-	call dein#add('cakebaker/scss-syntax.vim', {'on_ft': ['sass', 'scss']})
-	call dein#add('tmux-plugins/vim-tmux', {'on_ft': ['tmux']})
-	call dein#add('PotatoesMaster/i3-vim-syntax', {'on_ft': ['i3']})
-	call dein#add('pearofducks/ansible-vim')
-	call dein#add('hashivim/vim-terraform.git')
+	Plug 'elzr/vim-json', {'on_ft': ['json']}
+	Plug 'jelera/vim-javascript-syntax', {'on_ft': ['javascript']}
+	Plug 'hail2u/vim-css3-syntax', {'on_ft': ['css']}
+	Plug 'groenewege/vim-less', {'on_ft': ['less']}
+	Plug 'cakebaker/scss-syntax.vim', {'on_ft': ['sass', 'scss']}
+	Plug 'tmux-plugins/vim-tmux', {'on_ft': ['tmux']}
+	Plug 'PotatoesMaster/i3-vim-syntax', {'on_ft': ['i3']}
+	Plug 'pearofducks/ansible-vim'
+	"Plug 'hashivim/vim-terraform.git'
 "}}}
 " ------------ Misc {{{
 
 	" ---- DIFF
 	" Diff complete directories
 	" Usage: :DirDiff <dir1> <dir2>
-	call dein#add('will133/vim-dirdiff', {'on_cmd': ['DirDiff']})
+	Plug 'will133/vim-dirdiff', {'on_cmd': ['DirDiff']}
+
+	" Multline comment
+	Plug 'scrooloose/nerdcommenter'
 
 	" ---- Editor
 	" obey .editorconfig
-	call dein#add('editorconfig/editorconfig')
+	Plug 'editorconfig/editorconfig'
 
 	" ---- Hex color codes
-	call dein#add('gko/vim-coloresque')
+	Plug 'gko/vim-coloresque'
 
 	" ---- Fonts
 	" Must be loaded after all plugins that used the devicons
 	" put last
-	call dein#add('ryanoasis/vim-devicons')
+	Plug 'ryanoasis/vim-devicons'
+call plug#end()
 "}}}
-"}}}
-"------- Dein: Destructor {{{
-"-------------------------------------------------------------------------------
-	" Required:
-	call dein#end()
-	call dein#save_state()
-endif
-
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-	call dein#install()
-endif
 "}}}
 "------- DEFAULT {{{
 "-------------------------------------------------------------------------------
@@ -186,15 +174,15 @@ if has('nvim')
 endif
 
 " Use true colors
-set termguicolors
+"set termguicolors
 
 " Molokai colorscheme
 colorscheme molokai
 let g:molokai_original = 1
 
 " Seoul colorscheme
+" colorscheme seoul256
 "let g:seoul256_background = 233
-"colorscheme seoul256
 
 " Hybrid colorscheme
 "let g:hybrid_use_Xresources = 1
@@ -207,8 +195,8 @@ autocmd FilterWritePre * if &diff | colorscheme hybrid | endif
 
 " Ignore whitespace in diff mode
 if &diff
-    " diff mode
-    set diffopt+=iwhite
+	" diff mode
+	set diffopt+=iwhite
 	set diffexpr=DiffW()
 endif
 
@@ -226,9 +214,9 @@ endif
 " tmux does not support Background Color erase (bce)
 " @see https://sunaku.github.io/vim-256color-bce.html
 " @see https://github.com/tmux/tmux/issues/109
-if &term =~ '256color'
-	set t_ut=
-endif
+" if &term =~ '256color'
+"	set t_ut=
+" #endif
 "" Fix tmux term variable
 "if &term =~ '^screen'
 "	" disable Background Color Erase (BCE) so that color schemes
@@ -600,14 +588,14 @@ call unite#custom#source('file_mru,file_rec,file_rec/async,grep,locate',
 	\], '\|'))
 
 let g:default_context = {
-    \ 'winheight' : 15,
-    \ 'update_time' : 100,
-    \ 'prompt' : '➤ ',
-    \ 'enable_start_insert' : 1,
-    \ 'enable_short_source_names' : 0,
-    \ 'marked_icon' : '✓',
-    \ 'ignorecase' : 1,
-    \ 'smartcase' : 1,
+	\ 'winheight' : 15,
+	\ 'update_time' : 100,
+	\ 'prompt' : '➤ ',
+	\ 'enable_start_insert' : 1,
+	\ 'enable_short_source_names' : 0,
+	\ 'marked_icon' : '✓',
+	\ 'ignorecase' : 1,
+	\ 'smartcase' : 1,
 \ }
 call unite#custom#profile('default', 'context', default_context)
 "
@@ -629,16 +617,16 @@ call unite#custom#profile('default', 'context', default_context)
 ""let g:unite_source_grep_recursive_opt = ''
 "
 if executable('ag')
-    let g:unite_source_grep_command='ag'
-    "let g:unite_source_grep_default_opts='--nocolor --nogroup -a -S'
-    let g:unite_source_grep_default_opts='--nocolor --nogroup --column'
-    let g:unite_source_grep_recursive_opt=''
-    "let g:unite_source_grep_search_word_highlight = 'ctermfg=15 ctermbg=2'
+	let g:unite_source_grep_command='ag'
+	"let g:unite_source_grep_default_opts='--nocolor --nogroup -a -S'
+	let g:unite_source_grep_default_opts='--nocolor --nogroup --column'
+	let g:unite_source_grep_recursive_opt=''
+	"let g:unite_source_grep_search_word_highlight = 'ctermfg=15 ctermbg=2'
 elseif executable('ack')
-    let g:unite_source_grep_command='ack'
-    let g:unite_source_grep_default_opts='--no-group --no-color'
-    let g:unite_source_grep_recursive_opt=''
-    "let g:unite_source_grep_search_word_highlight = 'ctermfg=15 ctermbg=2'
+	let g:unite_source_grep_command='ack'
+	let g:unite_source_grep_default_opts='--no-group --no-color'
+	let g:unite_source_grep_recursive_opt=''
+	"let g:unite_source_grep_search_word_highlight = 'ctermfg=15 ctermbg=2'
 endif
 
 " file			# files in current directory
@@ -680,76 +668,76 @@ let g:unite_source_menu_menus.files = {
 \                                          ⌘ [space]o',
 \}
 let g:unite_source_menu_menus.files.command_candidates = [
-    \['▷ open file                                                  ⌘ ,o',
-        \'Unite -start-insert file'],
-    \['▷ open more recently used files                              ⌘ ,m',
-        \'Unite file_mru'],
-    \['▷ open file with recursive search                            ⌘ ,O',
-        \'Unite -start-insert file_rec/async'],
-    \['▷ edit new file',
-        \'Unite file/new'],
-    \['▷ search directory',
-        \'Unite directory'],
-    \['▷ search recently used directories',
-        \'Unite directory_mru'],
-    \['▷ search directory with recursive search',
-        \'Unite directory_rec/async'],
-    \['▷ make new directory',
-        \'Unite directory/new'],
-    \['▷ change working directory',
-        \'Unite -default-action=lcd directory'],
-    \['▷ know current working directory',
-        \'Unite output:pwd'],
-    \['▷ junk files                                                 ⌘ ,d',
-        \'Unite junkfile/new junkfile'],
-    \['▷ save as root                                               ⌘ :w!!',
-        \'exe "write !sudo tee % >/dev/null"'],
-    \['▷ quick save                                                 ⌘ ,w',
-        \'normal ,w'],
-    \['▷ open ranger                                                ⌘ ,x',
-        \'call RangerChooser()'],
-    \['▷ open vimfiler                                              ⌘ ,X',
-        \'VimFiler'],
-    \]
+	\['▷ open file                                                  ⌘ ,o',
+		\'Unite -start-insert file'],
+	\['▷ open more recently used files                              ⌘ ,m',
+		\'Unite file_mru'],
+	\['▷ open file with recursive search                            ⌘ ,O',
+		\'Unite -start-insert file_rec/async'],
+	\['▷ edit new file',
+		\'Unite file/new'],
+	\['▷ search directory',
+		\'Unite directory'],
+	\['▷ search recently used directories',
+		\'Unite directory_mru'],
+	\['▷ search directory with recursive search',
+		\'Unite directory_rec/async'],
+	\['▷ make new directory',
+		\'Unite directory/new'],
+	\['▷ change working directory',
+		\'Unite -default-action=lcd directory'],
+	\['▷ know current working directory',
+		\'Unite output:pwd'],
+	\['▷ junk files                                                 ⌘ ,d',
+		\'Unite junkfile/new junkfile'],
+	\['▷ save as root                                               ⌘ :w!!',
+		\'exe "write !sudo tee % >/dev/null"'],
+	\['▷ quick save                                                 ⌘ ,w',
+		\'normal ,w'],
+	\['▷ open ranger                                                ⌘ ,x',
+		\'call RangerChooser()'],
+	\['▷ open vimfiler                                              ⌘ ,X',
+		\'VimFiler'],
+	\]
 nnoremap <silent>[menu]o :Unite -silent -winheight=17 -start-insert
-            \ menu:files<CR>
+			\ menu:files<CR>
 "}}}
 " ------------ Unite Menu (Git) {{{
 "}}}
 let g:unite_source_menu_menus.git = {
-    \ 'description' : '            gestionar repositorios git
-        \                            ⌘ [space]g',
-    \}
+	\ 'description' : '            gestionar repositorios git
+		\                            ⌘ [space]g',
+	\}
 let g:unite_source_menu_menus.git.command_candidates = [
-    \['▷ tig                                                        ⌘ ,gt',
-        \'normal ,gt'],
-    \['▷ git status       (Fugitive)                                ⌘ ,gs',
-        \'Gstatus'],
-    \['▷ git diff         (Fugitive)                                ⌘ ,gd',
-        \'Gdiff'],
-    \['▷ git commit       (Fugitive)                                ⌘ ,gc',
-        \'Gcommit'],
-    \['▷ git log          (Fugitive)                                ⌘ ,gl',
-        \'exe "silent Glog | Unite quickfix"'],
-    \['▷ git blame        (Fugitive)                                ⌘ ,gb',
-        \'Gblame'],
-    \['▷ git stage        (Fugitive)                                ⌘ ,gw',
-        \'Gwrite'],
-    \['▷ git checkout     (Fugitive)                                ⌘ ,go',
-        \'Gread'],
-    \['▷ git rm           (Fugitive)                                ⌘ ,gr',
-        \'Gremove'],
-    \['▷ git mv           (Fugitive)                                ⌘ ,gm',
-        \'exe "Gmove " input("destino: ")'],
-    \['▷ git push         (Fugitive, salida por buffer)             ⌘ ,gp',
-        \'Git! push'],
-    \['▷ git pull         (Fugitive, salida por buffer)             ⌘ ,gP',
-        \'Git! pull'],
-    \['▷ git prompt       (Fugitive, salida por buffer)             ⌘ ,gi',
-        \'exe "Git! " input("comando git: ")'],
-    \['▷ git cd           (Fugitive)',
-        \'Gcd'],
-    \]
+	\['▷ tig                                                        ⌘ ,gt',
+		\'normal ,gt'],
+	\['▷ git status       (Fugitive)                                ⌘ ,gs',
+		\'Gstatus'],
+	\['▷ git diff         (Fugitive)                                ⌘ ,gd',
+		\'Gdiff'],
+	\['▷ git commit       (Fugitive)                                ⌘ ,gc',
+		\'Gcommit'],
+	\['▷ git log          (Fugitive)                                ⌘ ,gl',
+		\'exe "silent Glog | Unite quickfix"'],
+	\['▷ git blame        (Fugitive)                                ⌘ ,gb',
+		\'Gblame'],
+	\['▷ git stage        (Fugitive)                                ⌘ ,gw',
+		\'Gwrite'],
+	\['▷ git checkout     (Fugitive)                                ⌘ ,go',
+		\'Gread'],
+	\['▷ git rm           (Fugitive)                                ⌘ ,gr',
+		\'Gremove'],
+	\['▷ git mv           (Fugitive)                                ⌘ ,gm',
+		\'exe "Gmove " input("destino: ")'],
+	\['▷ git push         (Fugitive, salida por buffer)             ⌘ ,gp',
+		\'Git! push'],
+	\['▷ git pull         (Fugitive, salida por buffer)             ⌘ ,gP',
+		\'Git! pull'],
+	\['▷ git prompt       (Fugitive, salida por buffer)             ⌘ ,gi',
+		\'exe "Git! " input("comando git: ")'],
+	\['▷ git cd           (Fugitive)',
+		\'Gcd'],
+	\]
 
 nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
 "}}}
@@ -1011,7 +999,7 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 " Turned off, as it does not support tabs yet
 "Vim
 "let g:indentLine_color_term = 239
-    
+	
 "GVim
 "let g:indentLine_color_gui = '#A4E57E'
 "let g:indentLine_color_gui = '#FF0000'
@@ -1141,13 +1129,13 @@ let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 function DiffW()
   let opt = ""
    if &diffopt =~ "icase"
-     let opt = opt . "-i "
+	 let opt = opt . "-i "
    endif
    if &diffopt =~ "iwhite"
-     let opt = opt . "-w " " swapped vim's -b with -w
+	 let opt = opt . "-w " " swapped vim's -b with -w
    endif
    silent execute "!diff -a --binary " . opt .
-     \ v:fname_in . " " . v:fname_new .  " > " . v:fname_out
+	 \ v:fname_in . " " . v:fname_new .  " > " . v:fname_out
 endfunction
 
 " vim: set ts=4:

@@ -70,6 +70,7 @@ client.focused			#da2263  #d70a53 #ffffff #eb709b
 client.focused_inactive	#565656  #444444 #ffffff #666666
 client.unfocused		#373737  #222222 #888888 #444444
 client.urgent			#ec7ea4  #eb709b #ffffff #eb709b
+focus_follows_mouse no
 
 # $i3-background
 #exec_always --no-startup-id xsetroot -solid '#000000'
@@ -160,7 +161,7 @@ bindsym $mod+Shift+space floating toggle
 # split in horizontal orientation
 bindsym $mod+c split h
 bindsym $mod+v split v
-bindsym $mod+t split toggle
+# bindsym $mod+t split toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -317,7 +318,7 @@ bindsym $mod+0 workspace $WS10
 bindsym $control+$mod+Left		workspace prev_on_output
 bindsym $control+$mod+Right		workspace next_on_output
 bindsym $control+$mod+$left		workspace prev_on_output
-bindsym $control+$mod+$right	workspace next_on_output
+#bindsym $control+$mod+$right	workspace next_on_output
 
 # For instance: Assume you are on workspace "1: www" and switch to "2: IM"
 # using mod+2 because somebody sent you a message.
@@ -366,7 +367,7 @@ bindsym $mod+Shift+$right	exec "~/.config/i3/bin/wsmove.py next"
 #move container to output <<left|right|down|up>|<output>>
 bindsym $mod+$alt+$up move workspace to output up
 bindsym $mod+$alt+$down move workspace to output down
-bindsym $mod+$alt+$right move workspace to output right
+bindsym $mod+t move workspace to output right
 bindsym $mod+$alt+$left move workspace to output left
 
 bindsym $mod+$alt+Up move workspace to output up
@@ -396,6 +397,9 @@ bindsym $mod+Shift+r restart
 # Exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+e mode "$mode_system"
+
+# Lock
+bindsym Ctrl+$mod+l exec --no-startup-id xlock -m
 
 # Kill focused window
 bindsym $mod+q kill

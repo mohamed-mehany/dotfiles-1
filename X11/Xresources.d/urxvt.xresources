@@ -127,6 +127,14 @@ URxvt*intensityStyles:		false
 ! to all instances, while perl-ext is used for specific instances.
 URxvt.perl-ext:
 URxvt*perl-ext-common:		default,selection-to-clipboard
+!! Copy-Paste
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.copyCommand: xsel -ib
+URxvt.pasteCommand: xsel -ob
 !URxvt.perl-ext-common:
 
 

@@ -57,9 +57,9 @@ instance=/
 interval=60
 
 # Requires internet
-[eth]
-command=~/.local/share/i3blocks-modules/modules/ethereum -f 'E {usd}$' -tc '{usd}' '<' 380
-interval=180
+#[eth]
+#command=~/.local/share/i3blocks-modules/modules/ethereum -f 'E {usd}$' -tc '{usd}' '<' 380
+#interval=180
 
 # Requires internet
 #[bch]
@@ -67,10 +67,10 @@ interval=180
 #interval=180
 
 # Requires internet
-[btc]
-command=~/.local/share/i3blocks-modules/modules/bitcoin -f ' {usd}$' -tc '{usd}' '<' 4470
-instance=coindesk
-interval=180
+#[btc]
+#command=~/.local/share/i3blocks-modules/modules/bitcoin -f ' {usd}$' -tc '{usd}' '<' 4470
+#instance=coindesk
+#interval=180
 
 # Requires internet
 [online]
